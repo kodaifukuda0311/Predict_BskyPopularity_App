@@ -1,6 +1,7 @@
-streamlit==1.32.2
-numpy==1.26.4
-tensorflow==2.16.1
+streamlit==1.25.0
+numpy==1.24.3
+tensorflow==2.12.0
 spacy==3.6.1
-ja_core_news_lg @ https://github.com/explosion/spacy-models/releases/download/ja_core_news_lg-3.6.0/ja_core_news_lg-3.6.0-py3-none-any.whl
+thinc==8.1.11
 protobuf==3.20.3
+ja_core_news_lg @ https://github.com/explosion/spacy-models/releases/download/ja_core_news_lg-3.6.0/ja_core_news_lg-3.6.0-py3-none-any.whl
