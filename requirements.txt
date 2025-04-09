@@ -1,0 +1,5 @@
+streamlit
+numpy
+spacy<3.7.0
+tensorflow
+ginza
