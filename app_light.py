@@ -6,9 +6,12 @@ import pickle
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-# モデル・トークナイザ・GiNZAの読み込み
-nlp = spacy.load("ja_ginza")
-stopwords = nlp.Defaults.stop_words
+# spaCyモデルが存在しない場合はダウンロード
+model_name = "ja_core_news_lg"
+if not spacy.util.is_package(model_name):
+    spacy.cli.download(model_name)
+
+nlp = spacy.load(model_name)
 
 with open("tokenizer.pkl", "rb") as f:
     tokenizer = pickle.load(f)
