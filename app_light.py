@@ -5,6 +5,7 @@ import spacy
 import pickle
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+import os
 
 # spaCyモデルが存在しない場合はダウンロード
 model_name = "ja_core_news_lg"
