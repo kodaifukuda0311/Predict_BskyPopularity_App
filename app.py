@@ -39,7 +39,7 @@ def predict_popularity(headline, hour_period):
     return "いいね！ヒットの可能性が高いです！" if pred[0][0] >= 0.5 else "ごめんね、ヒットの可能性は低いです…"
 
 # Streamlit UI
-st.title("📰 人気記事予測アプリ")
+st.title("📰 Blueskyバズ予測ツール")
 
 headline = st.text_input("記事の見出しを入力してください")
 hour_period = st.selectbox("投稿時間帯を選んでください", ["morning", "noon", "afternoon", "evening", "midnight"])
