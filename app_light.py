@@ -45,6 +45,18 @@ def predict_popularity(headline, hour_period):
 # Streamlit UI
 st.title("📰 Blueskyバズ予測ツール")
 
+st.markdown("### 📝 アプリの概要")
+st.write("""
+これはあなたのBluesky投稿が「バズるかどうか」を予測するアプリです。 
+見出しと投稿時間帯を入力するだけで、AIが73%の精度でヒットの可能性を判定してくれます。
+
+7～11時　→　morning
+12～14時　→ noon
+15～19時　→ afternoon
+20～23時　→ evening
+24～6時　→ midnight
+""")
+
 headline = st.text_input("記事の見出しを入力してください")
 hour_period = st.selectbox("投稿時間帯を選んでください", ["morning", "noon", "afternoon", "evening", "midnight"])
 
