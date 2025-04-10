@@ -13,6 +13,7 @@ if not spacy.util.is_package(model_name):
     spacy.cli.download(model_name)
 
 nlp = spacy.load(model_name)
+stopwords = nlp.Defaults.stop_words
 
 with open("tokenizer.pkl", "rb") as f:
     tokenizer = pickle.load(f)
@@ -50,15 +51,11 @@ st.write("""
 これはあなたのBluesky投稿が「バズるかどうか」を予測するアプリです。 
 見出しと投稿時間帯を入力するだけで、AIが73%の精度でヒットの可能性を判定してくれます。
 
-7～11時　→　morning
-
-12～14時　→ noon
-
-15～19時　→ afternoon
-
-20～23時　→ evening
-
-24～6時　→ midnight
+- 7～11時 → morning
+- 12～14時 → noon
+- 15～19時 → afternoon
+- 20～23時 → evening
+- 24～6時 → midnight
 """)
 
 headline = st.text_input("記事の見出しを入力してください")
