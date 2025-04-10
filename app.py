@@ -50,7 +50,7 @@ st.write("""
 12～14時　→ noon
 15～19時　→ afternoon
 20～23時　→ evening
-24～6時　→midnight
+24～6時　→ midnight
 """)
 
 headline = st.text_input("記事の見出しを入力してください")
