@@ -18,7 +18,7 @@ stopwords = nlp.Defaults.stop_words
 with open("tokenizer.pkl", "rb") as f:
     tokenizer = pickle.load(f)
 
-model = load_model("best_model20250408.h5")
+model = load_model("best_model.h5")
 
 # 時間帯エンコード
 def encode_hour_period(hour_str):
@@ -50,6 +50,7 @@ st.markdown("#### 📝 アプリの概要")
 st.write("""
 これはあなたのBluesky投稿が「バズるかどうか」を予測するアプリです。 
 見出しと投稿時間帯を入力するだけで、AIが74%の精度でヒットの可能性を判定してくれます。
+（モデルは20250408更新）
 
 - 7～11時 → morning
 - 12～14時 → noon
