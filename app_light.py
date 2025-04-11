@@ -18,7 +18,7 @@ stopwords = nlp.Defaults.stop_words
 with open("tokenizer.pkl", "rb") as f:
     tokenizer = pickle.load(f)
 
-model = load_model("best_model.h5")
+model = load_model("best_model20250408.h5")
 
 # 時間帯エンコード
 def encode_hour_period(hour_str):
