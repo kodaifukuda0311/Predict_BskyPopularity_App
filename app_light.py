@@ -21,7 +21,7 @@ def load_tokenizer():
 
 @st.cache_resource
 def load_keras_model():
-    return load_model("best_model20250408.h5")
+    return load_model("best_model20250414.h5")
 
 nlp = load_nlp()
 stopwords = nlp.Defaults.stop_words
@@ -58,7 +58,7 @@ st.markdown("#### 📝 アプリの概要")
 st.write("""
 これはあなたのBluesky投稿が「バズるかどうか」を予測するアプリです。 
 見出しと投稿時間帯を入力するだけで、AIが74%の精度でヒットの可能性を判定してくれます。\\
-（モデルは20250408更新）
+（モデルは20250414更新）
 
 - 7～11時 → morning
 - 12～14時 → noon
