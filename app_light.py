@@ -7,18 +7,26 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import os
 
-# spaCyモデルが存在しない場合はダウンロード
-model_name = "ja_core_news_lg"
-if not spacy.util.is_package(model_name):
-    spacy.cli.download(model_name)
+@st.cache_resource
+def load_nlp():
+    model_name = "ja_core_news_lg"
+    if not spacy.util.is_package(model_name):
+        spacy.cli.download(model_name)
+    return spacy.load(model_name)
 
-nlp = spacy.load(model_name)
+@st.cache_resource
+def load_tokenizer():
+    with open("tokenizer.pkl", "rb") as f:
+        return pickle.load(f)
+
+@st.cache_resource
+def load_keras_model():
+    return load_model("best_model20250408.h5")
+
+nlp = load_nlp()
 stopwords = nlp.Defaults.stop_words
-
-with open("tokenizer.pkl", "rb") as f:
-    tokenizer = pickle.load(f)
-
-model = load_model("best_model20250408.h5")
+tokenizer = load_tokenizer()
+model = load_keras_model()
 
 # 時間帯エンコード
 def encode_hour_period(hour_str):
@@ -27,7 +35,7 @@ def encode_hour_period(hour_str):
     one_hot[mapping[hour_str]] = 1
     return one_hot
 
-# 前処理
+# Preprocess
 def preprocess(headline, hour_period):
     doc = nlp(headline)
     tokens = [token.text for token in doc if token.pos_ in {"NOUN", "VERB", "ADJ", "X"} and token.text not in stopwords]
@@ -37,7 +45,7 @@ def preprocess(headline, hour_period):
     hour_encoded = encode_hour_period(hour_period).reshape(1, -1)
     return np.hstack([padded, hour_encoded])
 
-# 予測
+# Predictor 
 def predict_popularity(headline, hour_period):
     X = preprocess(headline, hour_period)
     pred = model.predict(X)
