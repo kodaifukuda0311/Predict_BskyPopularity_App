@@ -21,7 +21,7 @@ def load_tokenizer():
 
 @st.cache_resource
 def load_keras_model():
-    return load_model("best_model20250414.h5")
+    return load_model("best_model20250421.h5")
 
 nlp = load_nlp()
 stopwords = nlp.Defaults.stop_words
